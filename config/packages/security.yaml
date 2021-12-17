@@ -29,25 +29,24 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         api:
-            security: false
-            # pattern: ^/api
-            # stateless: true
-            # provider: app_user_provider
-            # jwt: ~
-            # # guard: 
-            # #     authenticators:
-            # #         - lexik_jwt_authentication.jwt_token_authenticator
+            pattern: ^/api
+            stateless: true
+            provider: app_user_provider
+            jwt: ~
+            # guard: 
+            #     authenticators:
+            #         - lexik_jwt_authentication.jwt_token_authenticator
         main:
             lazy: true
-            # provider: app_user_provider
+            provider: app_user_provider
             
-            # json_login:
-            #     # provider: app_user_provider
-            #     check_path: /api/login_check
-            #     username_path: username
-            #     password_path: password
-            #     success_handler: lexik_jwt_authentication.handler.authentication_success
-            #     failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            json_login:
+                # provider: app_user_provider
+                check_path: /api/login_check
+                username_path: username
+                password_path: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -62,5 +61,4 @@ security:
          - { path: ^/api, roles: PUBLIC_ACCESS }
          - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/api/login_check, roles: PUBLIC_ACCESS }
-         - { path: ^/api/create_user, roles: PUBLIC_ACCESS }
         # - { path: ^/profile, roles: ROLE_USER }

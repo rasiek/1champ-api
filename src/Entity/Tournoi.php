@@ -9,7 +9,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * 
+ *  collectionOperations={
+ *      "get",
+ *      "post"
+ * }
+ * )
  * @ORM\Entity(repositoryClass=TournoiRepository::class)
  */
 class Tournoi

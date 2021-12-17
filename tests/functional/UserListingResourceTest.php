@@ -20,6 +20,22 @@ class TestListingResourceTest extends CustomApiTestCase
         ]);
         $this->assertResponseStatusCodeSame(201);
     }
+
+    public function testCreateUser()
+    {
+        $client = self::createClient();
+
+        $client->request('POST', '/api/users', [
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'json' => [
+                'username' => 'rasiek',
+                'password' => '1234',
+            ]
+        ]);
+        $this->assertResponseStatusCodeSame(201);
+    }
 }
 
 
